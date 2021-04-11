@@ -1,0 +1,10 @@
+﻿.destination-card-item {
+  max-width: 900px;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+}
+
+.fa-star {
+  color: gold;
+}

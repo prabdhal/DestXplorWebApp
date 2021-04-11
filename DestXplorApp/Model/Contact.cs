@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DestXplorApp
+namespace DestXplorWebApp
 {
   public class Contact
   {

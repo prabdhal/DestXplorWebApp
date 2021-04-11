@@ -1,0 +1,39 @@
+﻿
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.card {
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  border-radius: 10px;
+}
+
+.card--caption {
+  padding: 2px;
+  font-weight: bold;
+}
+
+.card--item--link {
+  text-align: center;
+  color: black;
+}
+
+.card--item--link:hover {
+  text-decoration: none;
+}
+
+.card--img--wrapper {
+  border-radius: 10px 10px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.card--img {
+  width: 100%;
+  transition: all 500ms ease-out;
+}
+
+.card--img:hover {
+  transform: scale(1.1);
+}

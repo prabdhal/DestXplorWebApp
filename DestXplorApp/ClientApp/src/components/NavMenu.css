@@ -16,3 +16,13 @@ html {
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
+
+.hidden-border {
+  border-bottom: 3px solid transparent;
+  transition: border-bottom 100ms ease-in;
+}
+
+.nav-item a:hover {
+    border-bottom: 3px solid goldenrod;
+    color: goldenrod !important;
+  }
