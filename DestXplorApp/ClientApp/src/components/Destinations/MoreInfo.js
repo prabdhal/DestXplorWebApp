@@ -14,11 +14,8 @@ const MoreInfo = (props) => {
     createFindPOIByCountryAPIEndpoint(country).fetchAll()
       .then(res => {
         console.log(res.data.results);
-        let poiList = res.data.results.map(poi => ({
-          id: poi.id,
-          name: poi.name,
-          score: poi.score,
-        }));
+        let poiList = res.data.results;
+
         props.setPOIList(poiList);
         console.log(poiList);
       })
@@ -27,24 +24,18 @@ const MoreInfo = (props) => {
 
   return (
     <>
-      <div className="container pb-5">
-        <h2 className="mb-5">Point of Interests</h2>
-        <div className="container my-2">
-          {props.poiList === null || props.poiList === undefined ? 
-            <></>
-            :
-            props.poiList.map(poi => {
-              return (
-                <DestinationCardItem
-                  key={poi.id}
-                  name={poi.name}
-                  score={poi.score}
-                />
-              );
-            })
-          }
-        </div>
-      </div>
+      {props.poiList === null || props.poiList === undefined ?
+        <p>No points of interest for {props.country}</p>
+        :
+        props.poiList.map(poi => {
+          return (
+            <DestinationCardItem
+              key={poi.id}
+              poi={poi}
+            />
+          );
+        })
+      }
     </>
   );
 }

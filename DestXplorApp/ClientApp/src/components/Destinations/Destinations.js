@@ -10,7 +10,7 @@ const Destinations = () => {
   const [countryList, setCountryList] = useState([]);
   const [regionsList, setRegionsList] = useState([]);
   const [country, setCountry] = useState(null);
-  const [poiList, setPOIList] = useState([]);
+  const [poiList, setPOIList] = useState();
 
   const location = useLocation();
 
@@ -70,11 +70,16 @@ const Destinations = () => {
           setCountry={setCountry}
         />
         :
-        <MoreInfo
-          poiList={poiList}
-          setPOIList={setPOIList}
-          country={country}
-        />  
+        <div className="container pb-5">
+          <div className="container my-2">
+            <h2 className="mb-5">Point of Interests</h2>
+            <MoreInfo
+              poiList={poiList}
+              setPOIList={setPOIList}
+              country={country}
+            />
+          </div>
+        </div>
       }
     </>
   );
