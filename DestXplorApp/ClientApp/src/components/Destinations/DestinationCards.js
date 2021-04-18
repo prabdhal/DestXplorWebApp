@@ -27,11 +27,16 @@ const DestinationCards = (props) => {
             return (
               <DestinationCardItem
                 key={region.id}
+                id={region.id}
                 name={region.name}
                 country={region.country}
                 score={region.score}
                 snippet={region.snippet}
                 images={region.images}
+                country={props.country}
+                setCountry={props.setCountry}
+                poiList={props.poiList}
+                getPOIByCountry={props.getPOIByCountry}
               />
             );
           })

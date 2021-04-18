@@ -21,7 +21,7 @@ export const createContactAPIEndpoint = (productionURL) => {
 
 export const createTopCitiesByCountryAPIEndpoint = (country) => {
 
-  const endpoint = `location.json?part_of=${country}&tag_labels=city&count=5&fields=id,name,score,snippet&order_by=-score`;
+  const endpoint = `location.json?part_of=${country}&tag_labels=city&fields=id,name,score,snippet&order_by=-score`;
 
   const url = TRIPOSO_BASE_URL + endpoint;
 
@@ -65,7 +65,29 @@ export const createMainRegionsByCountryAPIEndpoint = (country) => {
 
 export const createFindCountryByNameAPIEndpoint = (country) => {
 
-  const endpoint = `location.json?tag_labels=country&annotate=trigram:${country}&trigram=>=0.3&count=10&fields=id,name,score,snippet&order_by=-score`;
+  const endpoint = `location.json?tag_labels=country&annotate=trigram:${country}&trigram=>=0.3&fields=id,name,score,snippet&order_by=-score`;
+
+  let url = TRIPOSO_BASE_URL + endpoint;
+
+  return {
+    fetchAll: () => axios.get(url, {
+      headers: {
+        'X-Triposo-Account': `${process.env.REACT_APP_ACCOUNT_ID}`,
+        'X-Triposo-Token': `${process.env.REACT_APP_API_TOKEN}`,
+      }
+    }),
+    fetchById: id => axios.get(url + id, {
+      headers: {
+        'X-Triposo-Account': `${process.env.REACT_APP_ACCOUNT_ID}`,
+        'X-Triposo-Token': `${process.env.REACT_APP_API_TOKEN}`,
+      }
+    }),
+  };
+}
+
+export const createFindPOIByCountryAPIEndpoint = (country) => {
+
+  const endpoint = `poi.json?location_id=${country}&order_by=-score&fields=name,best_for,coordinates,score,id`;
 
   let url = TRIPOSO_BASE_URL + endpoint;
 

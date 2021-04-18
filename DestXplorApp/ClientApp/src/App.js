@@ -5,6 +5,7 @@ import { Layout } from './components/Layout';
 import Home from './components/Home/Home';
 import About from './components/About/About';
 import Destinations from './components/Destinations/Destinations';
+import MoreInfo from './components/Destinations/MoreInfo';
 import Contact from './components/Contact/Contact';
 import AdminInbox from './components/Contact/AdminInbox';
 
@@ -20,6 +21,7 @@ export default class App extends Component {
         <Route path='/about' component={About} />
         <Route path='/destinations' component={Destinations} />
         <Route path='/contact' component={Contact} />
+        <Route path='/destinations/more-info' component={MoreInfo} />
         <Route path='/admin-inbox' component={AdminInbox} />
       </Layout>
     );

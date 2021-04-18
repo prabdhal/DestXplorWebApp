@@ -1,8 +1,11 @@
-﻿import React, { Link } from 'react';
+﻿import React from 'react';
+import { useHistory, useLocation } from "react-router-dom";
 
 import './DestinationCardItem.css';
 
 const DestinationCardItem = (props) => {
+  const history = useHistory();
+  const location = useLocation();
 
   const displayScoreStars = (score) => {
     let rounded = Number((score).toFixed(0));
@@ -66,7 +69,7 @@ const DestinationCardItem = (props) => {
           <i className="fa fa-star"></i>
         </span>
       );
-    } else if (rounded == 8) {
+    } else if (rounded === 8) {
       return (
         <span>
           <i className="fa fa-star"></i>
@@ -111,13 +114,33 @@ const DestinationCardItem = (props) => {
     }
   }
 
+  const handleClick = (country) => {
+    console.log(country);
+    props.setCountry(country);
+    console.log(props.country);
+    console.log(props.poiList);
+    history.push("/destinations/more-info");
+  }
+
   return (
     <div className="destination-card-item p-2 my-5">
       <div className="flex-column px-3">
         <h3>{props.name}</h3>
         <p id="scoreBar">{displayScoreStars(props.score)} {Number((props.score).toFixed(0))}</p>
-        <p>{props.snippet}</p>
-        <button className="btn btn-primary">More Info</button>
+        {location.pathname === "/destinations" ?
+          <>
+            <p>{props.snippet}</p>
+            <a
+              className="btn btn-primary"
+              onClick={() => handleClick(props.id)}>
+              More Info
+            </a>
+          </>
+          :
+          <>
+            <p>Best</p>
+          </>
+        }
       </div>
     </div>
   );
