@@ -1,37 +1,37 @@
 ﻿import React, { useState, useEffect } from 'react';
 
 import DestinationCardItem from './DestinationCardItem';
-import { createFindPOIByCountryAPIEndpoint } from '../../API/api';
+import { createFindArticleByCountryAPIEndpoint } from '../../API/api';
 
 const MoreInfo = (props) => {
 
   useEffect(() => {
-    console.log(props.poiList);
-    getPOIByCountry(props.country);
+    console.log(props.detailsList);
+    getDetailsByCountry(props.country);
   }, [])
 
-  const getPOIByCountry = (country) => {
-    createFindPOIByCountryAPIEndpoint(country).fetchAll()
+  const getDetailsByCountry = (country) => {
+    createFindArticleByCountryAPIEndpoint(country).fetchAll()
       .then(res => {
         console.log(res.data.results);
-        let poiList = res.data.results;
+        let detailsList = res.data.results;
 
-        props.setPOIList(poiList);
-        console.log(poiList);
+        props.setDetailsList(detailsList);
+        console.log(detailsList);
       })
       .catch(err => console.log(err));
   }
 
   return (
     <>
-      {props.poiList === null || props.poiList === undefined ?
+      {props.detailsList === null || props.detailsList === undefined ?
         <p>No points of interest for {props.country}</p>
         :
-        props.poiList.map(poi => {
+        props.detailsList.map(details => {
           return (
             <DestinationCardItem
-              key={poi.id}
-              poi={poi}
+              key={details.id}
+              details={details}
             />
           );
         })

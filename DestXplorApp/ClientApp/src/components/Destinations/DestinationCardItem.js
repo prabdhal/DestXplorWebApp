@@ -118,7 +118,7 @@ const DestinationCardItem = (props) => {
     console.log(country);
     props.setCountry(country);
     console.log(props.country);
-    console.log(props.poiList);
+    console.log(props.detailsList);
     history.push("/destinations/more-info");
   }
 
@@ -143,29 +143,11 @@ const DestinationCardItem = (props) => {
   return (
     <div className="destination-card-item p-2 my-5">
       <div className="flex-column px-3">
-        <h3>{props.poi.name}</h3>
-        <p id="scoreBar">{displayScoreStars(props.poi.score)} {Number((props.poi.score).toFixed(0))}</p>
-        <div>
-          {
-            props.poi.best_for.length >= 1 ? 
-            <h5>Best For</h5> 
-            : 
-            <></>
-          }
-          {
-            props.poi.best_for.map(best => {
-              { console.log(best.name) }
-              if (best !== null) {
-                return (
-                  <div key={best.id}>
-                    <p>{best.name}</p>
-                    <p>Location: {best.location_id}</p>
-                  </div>
-                );
-              }
-            })
-          }
-        </div>
+        <h3>{props.details.name}</h3>
+        <p id="scoreBar">{displayScoreStars(props.details.score)} {Number((props.details.score).toFixed(0))}</p>
+        <p>{props.details.snippet}</p>
+        <h5>{props.details.structured_content.sections[0].title}</h5>
+        <div dangerouslySetInnerHTML={{ __html: props.details.structured_content.sections[0].summary }} />
       </div>
     </div>
 

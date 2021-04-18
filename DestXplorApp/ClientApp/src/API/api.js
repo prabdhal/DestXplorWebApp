@@ -106,3 +106,25 @@ export const createFindPOIByCountryAPIEndpoint = (country) => {
     }),
   };
 }
+
+export const createFindArticleByCountryAPIEndpoint = (country) => {
+
+  const endpoint = `article.json?location_ids=${country}`;
+
+  let url = TRIPOSO_BASE_URL + endpoint;
+
+  return {
+    fetchAll: () => axios.get(url, {
+      headers: {
+        'X-Triposo-Account': `${process.env.REACT_APP_ACCOUNT_ID}`,
+        'X-Triposo-Token': `${process.env.REACT_APP_API_TOKEN}`,
+      }
+    }),
+    fetchById: id => axios.get(url + id, {
+      headers: {
+        'X-Triposo-Account': `${process.env.REACT_APP_ACCOUNT_ID}`,
+        'X-Triposo-Token': `${process.env.REACT_APP_API_TOKEN}`,
+      }
+    }),
+  };
+}
