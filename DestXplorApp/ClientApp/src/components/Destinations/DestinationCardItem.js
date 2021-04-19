@@ -156,7 +156,11 @@ const DestinationCardItem = (props) => {
         <h3>{props.details.name}</h3>
         <p id="scoreBar">{displayScoreStars(props.details.score)} {getScore(props.details.score)}</p>
         <p>{props.details.snippet}</p>
-        <img src={`${props.details.structured_content.images[0].sizes.thumbnail.url}`} />
+        {props.details.structured_content.images[0] ? 
+          <img src={`${props.details.structured_content.images[0].sizes.thumbnail.url}`} />
+          :
+          <></>
+        }
         <details>
         <summary>More Details</summary>
           {props.details.structured_content.sections.map(article => {

@@ -6,7 +6,6 @@ import { createFindArticleByCountryAPIEndpoint } from '../../API/api';
 const MoreInfo = (props) => {
 
   useEffect(() => {
-    console.log(props.detailsList);
     getDetailsByCountry(props.country);
   }, [])
 

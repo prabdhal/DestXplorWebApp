@@ -30,7 +30,6 @@ const Destinations = () => {
           snippet: country.snippet,
         }));
         setCountryList(countryList);
-        console.log(countryList);
       })
       .catch(err => console.log(err));
   }
@@ -50,7 +49,6 @@ const Destinations = () => {
           snippet: region.snippet,
         }));
         setRegionsList(regionList);
-        console.log(regionList);
       })
       .catch(err => console.log(err));
   }
