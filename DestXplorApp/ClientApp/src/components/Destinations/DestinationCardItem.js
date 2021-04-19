@@ -123,10 +123,7 @@ const DestinationCardItem = (props) => {
   }
 
   const handleClick = (country) => {
-    console.log(country);
     props.setCountry(country);
-    console.log(props.country);
-    console.log(props.detailsList);
     history.push("/destinations/more-info");
   }
 

@@ -19,7 +19,7 @@ const DestinationCards = (props) => {
         <input
           type="text"
           className="form-control"
-          placeholder="Enter a country"
+          placeholder="Search by country"
           onChange={handleChange}
         />
         {
@@ -35,8 +35,6 @@ const DestinationCards = (props) => {
                 images={region.images}
                 country={props.country}
                 setCountry={props.setCountry}
-                poiList={props.poiList}
-                getPOIByCountry={props.getPOIByCountry}
               />
             );
           })

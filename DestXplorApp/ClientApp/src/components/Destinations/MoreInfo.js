@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 
 import DestinationCardItem from './DestinationCardItem';
 import { createFindArticleByCountryAPIEndpoint } from '../../API/api';
