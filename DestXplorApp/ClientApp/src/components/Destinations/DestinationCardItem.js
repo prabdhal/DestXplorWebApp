@@ -8,6 +8,8 @@ const DestinationCardItem = (props) => {
   const location = useLocation();
 
   const displayScoreStars = (score) => {
+    if (score > 10)
+      score = score / 2;
     let rounded = Number((score).toFixed(0));
 
     if (rounded === 1)
@@ -114,6 +116,12 @@ const DestinationCardItem = (props) => {
     }
   }
 
+  const getScore = (score) => {
+    if (score > 10)
+      score = score / 2;
+    return Number((score).toFixed(0));
+  }
+
   const handleClick = (country) => {
     console.log(country);
     props.setCountry(country);
@@ -127,9 +135,11 @@ const DestinationCardItem = (props) => {
       <div className="destination-card-item p-2 my-5">
         <div className="flex-column px-3">
           <h3>{props.name}</h3>
-          <p id="scoreBar">{displayScoreStars(props.score)} {Number((props.score).toFixed(0))}</p>
+          <div>Rating: {Number((props.score).toFixed(0))}</div>
+          <p id="scoreBar">{displayScoreStars(props.score)}</p>
           <p>{props.snippet}</p>
           <a
+            style={{ color: "white"}}
             className="btn btn-primary"
             onClick={() => handleClick(props.id)}
           >
@@ -144,10 +154,22 @@ const DestinationCardItem = (props) => {
     <div className="destination-card-item p-2 my-5">
       <div className="flex-column px-3">
         <h3>{props.details.name}</h3>
-        <p id="scoreBar">{displayScoreStars(props.details.score)} {Number((props.details.score).toFixed(0))}</p>
+        <p id="scoreBar">{displayScoreStars(props.details.score)} {getScore(props.details.score)}</p>
         <p>{props.details.snippet}</p>
-        <h5>{props.details.structured_content.sections[0].title}</h5>
-        <div dangerouslySetInnerHTML={{ __html: props.details.structured_content.sections[0].summary }} />
+        <img src={`${props.details.structured_content.images[0].sizes.thumbnail.url}`} />
+        <details>
+        <summary>More Details</summary>
+          {props.details.structured_content.sections.map(article => {
+            if (article.summary) {
+              return (
+                <div key={article.summary}>
+                  <h5>{article.title}</h5>
+                  <div dangerouslySetInnerHTML={{ __html: article.summary }} />
+                </div>
+              );
+            }
+        })}
+        </details>
       </div>
     </div>
 
